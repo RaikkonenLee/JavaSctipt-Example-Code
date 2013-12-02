@@ -111,3 +111,22 @@ function inherit(p){
   f.prototype = p;
   return new f();
 }
+    
+function test4(){
+  var mess = "";
+  var random = {
+    get octet() { return Math.floor(Math.random()*256); },
+    get uint16() { return Math.floor(Math.random()*65536); },
+    get int16() { return Math.floor(Math.random()*65536)-32768; }
+  };
+  var a1 = Object.getOwnPropertyDescriptor({x:1},"x");
+  var a2 = Object.getOwnPropertyDescriptor(random, "octet");
+  var a3 = Object.getPrototypeOf({},"x");
+  var a4 = Object.getPrototypeOf({}, "toString");
+  for (var p in a3)
+  {
+    if (mess !== "") mess += ",";
+    mess += p;
+  }
+  alert(mess);
+}
