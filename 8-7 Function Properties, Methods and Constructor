@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="Function_8-7" />
+<meta charset=utf-8 />
+<title>JS Bin</title>
+</head>
+<body>
+<input type="button" value="testobject" onclick="test()">
+</body>
+</html>
