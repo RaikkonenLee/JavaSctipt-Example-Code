@@ -130,3 +130,73 @@ function test4(){
   }
   alert(mess);
 }
+
+function test5(){
+  var o = {};
+  Object.defineProperty(o, "x", {
+    value : 1,
+    writable : true,
+    enumerable : false,
+    configurable : true
+  });
+  Object.defineProperty(o, "x", {
+    writable : false
+  });
+  o.x = 2;
+  Object.defineProperty(o, "x", {
+    value : 2
+  });
+  Object.defineProperty(o, "x", {
+    get: function() { return 0;}
+  });
+  alert(o.x);
+}
+
+function test6(){
+  var p = Object.defineProperties({},{
+    x : { value : 1, writable : true, enumabled : true, configurable : true},
+    y : { value : 1, writable : true, enumabled : true, configurable : true},
+    r : {
+      get : function() { return Math.sqrt(this.x * this.y + this.x * this.y);},
+      enumabled : true,
+      configurable : true
+    }
+  });
+  
+  alert(p.x.writable);
+}
+
+function test7(){
+  var a3 = {x:1, y:2, z:3};
+  var a1 = {x:4, y:5, z:6};
+  try{
+  Object.defineProperty(a3, "extend", {
+    writable : true,
+    enumerable : false,
+    configurable : true,
+    value : function(o){
+      var names = Object.getOwnPropertyNames(o);
+      
+      for (var i = 0; i < names.length; i++)
+      {
+        if (names[i] in this) continue;
+        var desc = Object.getOwnPropertyDescriptor(o, names[i]);
+        Object.defineProperty(this, names[i], desc);
+      }
+    }
+  });
+  } catch (ex)
+  {
+    alert(ex);
+  }
+  var mess = "";
+  
+  //a3.extend(a1);
+  for (var p in a3)
+  {
+    if (mess !== "") mess += ",";
+    mess += p;
+  }
+  //a3[0] = 7;
+  alert(mess);
+}
