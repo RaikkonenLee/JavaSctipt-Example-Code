@@ -34,8 +34,11 @@ function test(){
   //partial function 實做2
   var increment = partialLeft(sum, 1);
   var cubberoot = partialRight(Math.pow, 1/3);
+  alert(increment(3) + "_" + cubberoot(4));
   String.prototype.first = partial(String.prototype.charAt, 0);
   String.prototype.last = partial(String.prototype.substr, -1, 1);
+  var str1 = "abcd";
+  alert(str1.first() + "_" + str1.last());
   //partial function 實做3
   var not2 = partialLeft(compose, function(x) { return !x; });
   var even = function(x) { return x % 2 ===0;};
@@ -140,7 +143,7 @@ function partial(f /*,...*/){
     var a = array(args, 1);
     var i = 0, j = 0;
     for (; i < a.length; i++){
-      if (a[i] === undefinded) a[i] = arguments[j++];
+      if (a[i] === undefined) a[i] = arguments[j++];
     }
     a = a.concat(array(arguments, j));
     return f.apply(this, a);
