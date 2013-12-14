@@ -6,7 +6,7 @@ function test(){
   alert(r);
 }
 
-/*工廠方法回傳新物件*/
+/*定義range物件並繼承range.methods當作Class*/
 function range(from, to){
   var r = inherit(range.methods);
   r.from = from;
@@ -14,6 +14,7 @@ function range(from, to){
   return r;
 }
 
+/*定義range物件的prototype當作Class使用*/
 range.methods = {
   includes: function(x){ return this.from <= x && x <= this.to;},
   foreach: function(f) {
