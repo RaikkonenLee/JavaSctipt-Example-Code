@@ -36,6 +36,7 @@ Set.prototype.remove = function() {
   return this;
 };
 
+
 Set.prototype.contains = function(value){
   return this.values.hasOwnProperty(Set._v2s(value));
 };
