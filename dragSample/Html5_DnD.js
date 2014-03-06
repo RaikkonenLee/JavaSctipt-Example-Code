@@ -60,7 +60,7 @@ whenReady(function(){
 });
 
 whenReady(function() {
-	var lists = document.getElementById("ul");
+	var lists = document.getElementsByTagName("ul");
 	var regexp = /\bdnd\b/;
 	//
 	for (var i = 0; i < lists.length; i++) {
@@ -143,7 +143,7 @@ whenReady(function() {
 		}
 		//
 		function isChild(a, b) {
-			for (; a; a = a.parentNode;) {
+			for (; a; a = a.parentNode) {
 				if (a === b) {
 					return true;
 				}
@@ -152,17 +152,3 @@ whenReady(function() {
 		}
 	}
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
